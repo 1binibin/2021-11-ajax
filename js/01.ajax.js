@@ -8,7 +8,7 @@ xhr.open('GET', 'https://dapi.kakao.com/v2/search/web?query=블랙핑크');
 xhr.setRequestHeader('Authorization', 'KakaoAK e353e600436866e7fd69f646401bf28a');
 xhr.send(); */
 
-$.ajax({
+/* $.ajax({
     url: 'https://dapi.kakao.com/v2/search/web',
     type: 'GET',
     dataType: 'json',
@@ -28,4 +28,19 @@ function onSuccess(v) {
 }
 function onError(xhr, status, error) {
     console.log(xhr, status, error);
+} */
+
+axios
+.get('https://dapi.kakao.com/v2/search/web', {
+    params: { query:'블랙핑크'},
+    headers: {Authorization: 'KakaoAK e353e600436866e7fd69f646401bf28a'}
+})
+.then(onResult)
+.catch(onAxiosError);
+
+function onResult(v) {
+    console.log(v.data);
+}
+function onAxiosError(err) {
+    console.log(err);
 }

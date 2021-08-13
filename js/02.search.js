@@ -104,9 +104,10 @@ function onSubmit(e) {
 }
 
 function onSuccess(res) {
-    var cate = res.config.url.split('/').pop();
+    var cate = res.config.url.split('/').pop(); //체크
     var v = res.data;
     setTotalCnt(v.meta.total_count);
+    console.log(v);
     switch(cate){
         case 'web':
             setWebLists(v.documents);

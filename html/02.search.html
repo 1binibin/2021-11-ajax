@@ -16,7 +16,22 @@
 </head>
 <body>
     <div class="container">
-        
+        <form class="search-wrap form-inline my-5" onsubmit="return onSend(this);">
+            <select name="category" class="form-control mr-2">
+            <option value="web" selected>웹사이트</option>
+            <option value="blog">블로그</option>
+            <option value="image">이미지</option>
+            <option value="vclip">동영상</option>
+            <option value="book">책</option>
+            <option value="cafe">카페</option>
+        </select>
+            <input type="text" class="form-control mr-2 flex-grow-1" name="query" autofocus>
+            <button class="btn btn-primary">검색</button>
+        </form>
+        <h2 class="text-right mb-3">검색결과: <span class="result-cnt">건</span></h2>
+        <ul class="lists">
+
+        </ul>
     </div>
     <script src="../js/02.search.js"></script>
 </body>

@@ -12,11 +12,12 @@
     <script src="../js/jquery.min.js"></script>
     <script src="../js/moment.min.js"></script>
     <script src="../js/lodash.min.js"></script>
+    <script src="../js/axios.min.js"></script>
     <script src="../js/util.js"></script>
 </head>
 <body>
     <div class="container">
-        <form class="search-wrap form-inline my-5" onsubmit="return onSend(this);">
+        <form class="search-form form-inline my-5">
             <select name="category" class="form-control mr-2">
             <option value="web" selected>웹사이트</option>
             <option value="blog">블로그</option>
@@ -28,7 +29,7 @@
             <input type="text" class="form-control mr-2 flex-grow-1" name="query" autofocus>
             <button class="btn btn-primary">검색</button>
         </form>
-        <h2 class="text-right mb-3">검색결과: <span class="result-cnt">건</span></h2>
+        <h2 class="text-right mb-3">검색결과: <span class="result-cnt font-weight-bold">건</span></h2>
         <ul class="lists">
 
         </ul>

@@ -7,7 +7,7 @@
 .lists.web .list .link {color: #155daf; margin-bottom: .5em; display: inline-block;}
 .lists.web .list .dt {}
 
-.lists.image  {display: flex; flex-wrap: wrap;}
+.lists.image  {}
 .lists.image .list {margin: .5%; width: 11.5%;}
 
 /**********************  *********************/

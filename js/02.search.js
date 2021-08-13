@@ -1,7 +1,11 @@
 /*************** global init *****************/
 var auth = 'KakaoAK e353e600436866e7fd69f646401bf28a';
 var kakaoURL = 'https://dapi.kakao.com/'
-
+/**
+ * getParams(query)는 다른 query
+ * 데이터 받는 주소값의 query는 자동생성 같은 느낌.
+ * 
+ */
 /*************** user function  *****************/
 function getPath(cate) {
     return kakaoURL + (cate === 'book' ? 'v3': 'v2')+/search/+ cate;

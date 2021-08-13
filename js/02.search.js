@@ -19,9 +19,9 @@ function setTotalCnt(cnt) {
 }
 
 function setWebLists(r) {
-    $('.lists').empty();
+    $('.lists').empty().attr('class', 'lists web');
     r.forEach(function(v, i) {
-        var html = '<li class="list web">';
+        var html = '<li class="list">';
         html += '<a class="title" href="'+v.url+'">'+v.title+'</a>';
         html += '<p class="content">'+v.contents+'</p>';
         html += '<a href="'+v.url+'" class="link" target="_blank">'+v.url+'</a>';
@@ -32,23 +32,29 @@ function setWebLists(r) {
 }
 
 function setImageLists(r) {
-
+    $('.lists').empty().attr('class', 'lists image');
+    r.forEach(function(v, i) {
+        var html = '<li class="list">';
+        html += '<img src="'+v.thumbnail_url+'" class="w100"';
+        html += '</li>';
+        $('.lists').append(html);
+    });
 }
 
 function setVedioLists(r) {
-
+    console.log(r);
 }
 
 function setBlogLists(r) {
-
+    console.log(r);
 }
 
 function setBookLists(r) {
-
+    console.log(r);
 }
 
 function setCafeLists(r) {
-
+    console.log(r);
 }
 
 /*************** event callback *****************/

@@ -1,9 +1,10 @@
 /*************** global init *****************/
 var auth = 'KakaoAK e353e600436866e7fd69f646401bf28a';
+var kakaoURL = 'https://dapi.kakao.com/'
 
 /*************** user function  *****************/
 function getPath(cate) {
-    return'https://dapi.kakao.com/'+(cate === 'book' ? 'v3': 'v2')+'/search/' + cate;
+    return kakaoURL + (cate === 'book' ? 'v3': 'v2')+/search/+ cate;
 }
 
 function getParams(query) {
@@ -18,7 +19,16 @@ function setTotalCnt(cnt) {
 }
 
 function setWebLists(r) {
-    //$('.lists').empty();
+    $('.lists').empty();
+    r.forEach(function(v, i) {
+        var html = '<li class="list web">';
+        html += '<a class="title" href="'+v.url+'">'+v.title+'</a>';
+        html += '<p class="content">'+v.contents+'</p>';
+        html += '<a href="'+v.url+'" class="link" target="_blank">'+v.url+'</a>';
+        html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
+        html += '</li>';
+        $('.lists').append(html);
+    });
 }
 
 function setImageLists(r) {
@@ -74,7 +84,6 @@ function onSuccess(res) {
             break;
     }
 
-    setList(v.documents);
 }
 
 function onError(err) {

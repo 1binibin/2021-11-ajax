@@ -32,24 +32,24 @@ function setWebLists(r) {
 }
 
 function setImageLists(r) {
-    $('.lists').empty().attr('class', 'lists image grid-wrap');
-    $('.lists').append('<li class="list grid-sizer"></li>');
-    r.forEach(function(v, i) {
-        var html = '<li class="list grid-item">';
-        html += '<img src="'+v.thumbnail_url+'" class="w100"';
-        html += '</li>';
-        $('.lists').append(html);
-    });
-    var $grid = $('.grid-wrap').masonry({
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-sizer',
-        percentPosition: true
-    });
-    $grid.imagesLoaded().progress( function() {
-    $grid.masonry('layout');
-    }).documents(function(){
-        $grid.masonry('layout');
-    })
+	$('.lists').empty().attr('class', 'lists image grid-wrap');
+	$('.lists').append('<li class="list grid-sizer"></li>');
+	r.forEach(function(v, i) {
+		var html = '<li class="list grid-item">';
+		html += '<img src="'+v.thumbnail_url+'" class="w100">';
+		html += '</li>';
+		$(html).appendTo('.lists');
+	});
+	var $grid = $('.grid-wrap').masonry({
+		itemSelector: '.grid-item',
+		columnWidth: '.grid-sizer',
+		percentPosition: true
+	});
+	$grid.imagesLoaded().progress(function() {
+		$grid.masonry('layout');
+		$grid.masonry('reloadItems');
+	});
+
 }
 
 function setVedioLists(r) {

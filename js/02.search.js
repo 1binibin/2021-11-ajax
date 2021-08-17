@@ -67,19 +67,25 @@ function setImageLists(r) {
 
 }
 
-function setVedioLists(r) {
+function setClipLists(r) {
     console.log(r);
 }
 
 function setBlogLists(r) {
     $('.lists').empty().attr('class', 'lists blog');
+    var html = '';
     r.forEach(function(v, i) {
-        var html = '<li class="list">';
-        html += '<a class="title" href="'+v.url+'">'+v.title+'</a>';
-        html += '<p class="content">'+v.contents+'</p>';
-        html += '<a href="'+v.url+'" class="link" target="_blank">'+v.url+'</a>';
-        html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
-        html += '</li>';
+        html ='<li class="list">'
+        html +='<a href="'+v.url+'" class="thumbs">'
+        html +='<img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">'
+        html +='</a>'
+        html +='<div class="contents">'
+        html +='<a class="title" href="'+v.url+'">'+v.title+'</a>'
+        html +='<p class="content">'+v.contents+'</p>'
+        html +='<a class="name" href="'+v.url+'">'+v.blogname+'</a> | <a href="" class="link">'+v.url+'</a>'
+        html +='<div class="dt">'+moment(v.datatime).format('YYYY-MM-DD HH:mm:ss')+'</div>'
+        html +='</div>'
+        html +='</li>'
         $('.lists').append(html);
     });
 }
@@ -133,7 +139,7 @@ function onSuccess(res) {
             setImageLists(v.documents);
             break;
         case 'vclip':
-            setVedioLists(v.documents);
+            setClipLists(v.documents);
             break;
         case 'blog':
             setBlogLists(v.documents);

@@ -1,6 +1,12 @@
+/*
+['홍길동', '홍길만', '홍길순'].join(', ')  -> "홍길동, 홍길만, 홍길순"
+'0000 0000'.replace(' ', ' / ');  ->  "0000 / 0000"
+*/
 /*************** global init *****************/
 var auth = 'KakaoAK e353e600436866e7fd69f646401bf28a';
 var kakaoURL = 'https://dapi.kakao.com/'
+var cate, query, page = 1;
+var size = { web: 10, blog: 10, book: 10, cafe: 10, vclip: 15, image:80 }
 /**
  * getParams(query)는 다른 query
  * 데이터 받는 주소값의 query는 자동생성 같은 느낌.
@@ -12,8 +18,9 @@ function getPath(cate) {
 }
 
 function getParams(query) {
+
     return{
-        params: { query: query },
+        params: { query: query, size: size[cate], page: page },
         headers: { Authorization: auth }
     }
 }
@@ -164,6 +171,25 @@ function setCafeLists(r) {
     });;
 }
 
+function setPager(isEnd, totalRecord) {
+    var totalPage = Math.ceil( totalRecord/size[cate] );  //총 페이지수
+    if(totalPage > 50) totalPage = 50;
+    if(cate === 'vclip' && totalPage > 15)totalPage = 15;
+    var pagerCnt = 5;   // pager에 보여질 수
+    var startPage;  // pager의 시작 번호
+    var endPage;    // pager의 마지막 번호
+    var page = 4;
+    startPage = Math.floor( (page - 1) / pagerCnt) * pagerCnt +1;
+    endPage = startPage + pagerCnt -1;
+    if(endPage > totalPage) endPage = totalPage;
+
+    $('.pager-wrap .bt-page').remove();
+    for(var i=startPage; i<=endPage; i++){
+        //$('.pager-wrap .bt-next).before( $('<a href="#" class="bt-page">'+i+'</a>') )
+        $('<a href="#" class="bt-page">'+i+'</a>').insertBefore('.pager-wrap .bt-next');
+    }
+}
+
 /*************** event callback *****************/
 function onLoadError(el) {
     $('.modal-wrapper .img-wp img').attr('src', $(el).data('thumb'));
@@ -183,21 +209,21 @@ function onModalShow() {
 
 function onSubmit(e) {
     e.preventDefault();
-    var cate = $(this).find('select[name="category"]').val().trim();
-    var query = $(this).find('input[name="query"]').val().trim();
+    cate = $(this).find('select[name="category"]').val().trim();
+    query = $(this).find('input[name="query"]').val().trim();
     if(cate && cate !== '' && query !== '')
-    axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
+    axios.get( getPath(cate), getParams(query) ).then(onSuccess).catch(onError);
     else
     $(this).find('input[name="query"]').focus();
         //alert('검색조건이 충분하지 않습니다. 다시 시도해 주세요.')
 }
 
 function onSuccess(res) {
-    var cate = res.config.url.split('/').pop(); //체크
+    var cateStr = res.config.url.split('/').pop(); //체크
     var v = res.data;
-    setTotalCnt(v.meta.total_count);
-    console.log(v);
-    switch(cate){
+    setTotalCnt(v.meta.pageable_count);
+    setPager(v.meta.is_end, v.meta.pageable_count);
+    switch(cateStr){
         case 'web':
             setWebLists(v.documents);
             break;

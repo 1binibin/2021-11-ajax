@@ -72,7 +72,16 @@ function setVedioLists(r) {
 }
 
 function setBlogLists(r) {
-    console.log(r);
+    $('.lists').empty().attr('class', 'lists blog');
+    r.forEach(function(v, i) {
+        var html = '<li class="list">';
+        html += '<a class="title" href="'+v.url+'">'+v.title+'</a>';
+        html += '<p class="content">'+v.contents+'</p>';
+        html += '<a href="'+v.url+'" class="link" target="_blank">'+v.url+'</a>';
+        html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
+        html += '</li>';
+        $('.lists').append(html);
+    });
 }
 
 function setBookLists(r) {
@@ -104,7 +113,11 @@ function onSubmit(e) {
     e.preventDefault();
     var cate = $(this).find('select[name="category"]').val().trim();
     var query = $(this).find('input[name="query"]').val().trim();
+    if(cate && cate !== '' && query !== '')
     axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
+    else
+    $(this).find('input[name="query"]').focus();
+        //alert('검색조건이 충분하지 않습니다. 다시 시도해 주세요.')
 }
 
 function onSuccess(res) {

@@ -10,7 +10,7 @@
 .lists.image  {z-index: 1;}
 .lists.image .list {width: 12.5%; border: 5px solid #fff; cursor: pointer; transition: all .5s;}
 .lists.image .list:hover {border-color: #548308; transform:scale(1.5); box-shadow: 0 0 10px rgba(0, 0, 0, .4);  z-index: 9999;}
-
+/************ blog ************/
 .lists.blog {}
 .lists.blog .list {display: flex; padding: 1em; border-bottom: 1px solid #dedede;}
 .lists.blog .list .thumbs {width: 140px; padding: 4px; border: 1px solid #96b8ee;}
@@ -32,6 +32,16 @@
 .lists.clip .list .contents .link {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block;}
 .lists.clip .list .contents .dt {font-size: .875em; color: #999;  display: block;}
 
+/************* cafe ******************/
+.lists.cafe {}
+.lists.cafe .list {display: flex; padding: 1em; border-bottom: 1px solid #dedede;}
+.lists.cafe .list .thumbs {width: 140px; padding: 4px; border: 1px solid #96b8ee;}
+.lists.cafe .list .contents {width: calc(100% - 140px); padding-left: 1.5em;}
+.lists.cafe .list .contents .title {font-size: 1.7em; color: #03378a; margin-bottom: .5em; display: inline-block;}
+.lists.cafe .list .contents .content {font-size: 1em; line-height: 1.25; color: #777; margin-bottom: .75em;}
+.lists.cafe .list .contents .name {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block;}
+.lists.cafe .list .contents .link {font-size: 1em; color: #03378a; margin-bottom: .325em; display: inline-block;}
+.lists.cafe .list .contents .dt {font-size: .875em; color: #999;  display: block;}
 
 
 /************ book ********************/

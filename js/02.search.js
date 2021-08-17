@@ -109,7 +109,35 @@ function setBlogLists(r) {
 }
 
 function setBookLists(r) {
-    console.log(r);
+    $('.lists').empty().attr('class', 'lists book');
+    var html = '';
+    r.forEach(function(v, i) {
+        var author = v.authors.jo
+        html ='<li class="list">';
+        html +='<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
+        html +='<div class="info-wrap">';
+        html +='<a class="thumb-wp" href="'+v.url+'" target="_blank">';
+        html +='<img src="'+v.thumbnail_url+'" alt="" class="w100">';
+        html +='</a>';
+        html +='<div class="info-wp" target="_blank">';
+        html +='<div class="authors">';
+        html +='<span class="author">'+author+'</span>';
+        html +='<span class="translator">(역: '+translator+')</span>';
+        html +='</div>';
+        html +='<div class="prices">';
+        html +='<span class="price">'+v.price+'</span> |';
+        html +='<span class="sale-price">'+v.sale_price+'</span>';
+        html +='<span class="status">['+v.status+']</span>';
+        html +='</div>';
+        html +='<div class="publisher">'+v.publisher+'</div>';
+        html +='<div class="isbn">'+isbn+'</div>';
+        html +='<div class="dt">'+dt+'</div>';
+        html +='</div>';
+        html +='</div>';
+        html +='<a class="content" href="" target="_blank">'+v.contents+'</a>';
+        html +='</li>';
+        $('.lists').append(html);
+    });
 }
 
 function setCafeLists(r) {

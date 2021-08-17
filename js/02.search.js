@@ -26,7 +26,7 @@ function setWebLists(r) {
     $('.lists').empty().attr('class', 'lists web');
     r.forEach(function(v, i) {
         var html = '<li class="list">';
-        html += '<a class="title" href="'+v.url+'">'+v.title+'</a>';
+        html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
         html += '<p class="content">'+v.contents+'</p>';
         html += '<a href="'+v.url+'" class="link" target="_blank">'+v.url+'</a>';
         html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
@@ -72,16 +72,16 @@ function setClipLists(r) {
     var html = '';
     r.forEach(function(v, i){
         html ='<li class="list">';
-        html +='<a href="'+v.url+'" class="thumbs">';
+        html +='<a href="'+v.url+'" class="thumbs" target="_blank">';
         html +='<img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">';
         html +='</a>';
         html +='<div class="contents">';
-        html +='<a class="title" href="'+v.url+'">'+v.title+'</a>';
+        html +='<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
         html += '<div>';
-        html +='<a class="author" href="'+v.url+'">'+v.author+'</a> | ';
+        html +='<a class="author" href="'+v.url+'" target="_blank">'+v.author+'</a> | ';
         html +='<span class="play-time">'+getPlayTime(v.play_time)+'</span>';   //util.js
         html +='</div>';
-        html +='<a href="'+v.url+'" class="link">'+v.url+'</a>';
+        html +='<a href="'+v.url+'" class="link" target="_blank">'+v.url+'</a>';
         html +='<div class="dt">'+moment(v.datatime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
         html +='</div>';
         html +='</li>';
@@ -94,13 +94,13 @@ function setBlogLists(r) {
     var html = '';
     r.forEach(function(v, i) {
         html ='<li class="list">'
-        html +='<a href="'+v.url+'" class="thumbs">'
+        html +='<a href="'+v.url+'" class="thumbs" target="_blank">'
         html +='<img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">'
         html +='</a>'
         html +='<div class="contents">'
-        html +='<a class="title" href="'+v.url+'">'+v.title+'</a>'
+        html +='<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>'
         html +='<p class="content">'+v.contents+'</p>'
-        html +='<a class="name" href="'+v.url+'">'+v.blogname+'</a> | <a href="" class="link">'+v.url+'</a>'
+        html +='<a class="name" href="'+v.url+'" target="_blank">'+v.blogname+'</a> | <a href="" class="link">'+v.url+'</a>'
         html +='<div class="dt">'+moment(v.datatime).format('YYYY-MM-DD HH:mm:ss')+'</div>'
         html +='</div>'
         html +='</li>'

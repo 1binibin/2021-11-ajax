@@ -1,4 +1,4 @@
-/********************** global init *********************/
+/********************** web *********************/
 .lists {border-top: 1px solid #dedede; overflow-wrap: break-word;}
 .lists .list {}
 .lists.web .list {color: #555;border-bottom: 1px solid #dedede; margin-bottom: 1em; padding: 1em 0;}
@@ -7,9 +7,12 @@
 .lists.web .list .link {color: #155daf; margin-bottom: .5em; display: inline-block;width: 100%;}
 .lists.web .list .dt {}
 
+/************* image *********************/
 .lists.image  {z-index: 1;}
 .lists.image .list {width: 12.5%; border: 5px solid #fff; cursor: pointer; transition: all .5s;}
 .lists.image .list:hover {border-color: #548308; transform:scale(1.5); box-shadow: 0 0 10px rgba(0, 0, 0, .4);  z-index: 9999;}
+
+
 /************ blog ************/
 .lists.blog {}
 .lists.blog .list {display: flex; align-items: flex-start; flex-wrap: wrap; padding: 1em; border-bottom: 1px solid #dedede;}
@@ -63,6 +66,13 @@
 .lists.book .content {color: #444; line-height: 1.25;}
 
 
+/********** pager ************/
+.pager-wrap {display: flex; justify-content: center; margin: 2em 0;}
+.pager-wrap a {width: 32px; height:32px; border: 1px solid #ccc; text-align: center; line-height: 30px; margin-right: -1px; text-decoration: none;}
+.pager-wrap .bt-page.active {background-color: #333; color: #fff;}
+.pager-wrap a:not(.bt-page) {background-color: #efefef;}
+
+
 
 
 /**************** modal ****************/
@@ -109,7 +119,7 @@
 	.lists.cafe .list .contents {padding-left: 0;}
 	.lists.book .list {width: 100%;}
 	.lists.book .list:nth-child(odd) {border-right: none;}
-    
+
     .modal-wrapper .modal-wrap {width: 96%;}
     .modal-wrapper .modal-wrap .img-wp img { max-width: 100%;}
     .modal-wrapper .modal-wrap .img-wp .bt-close {right: 0;}

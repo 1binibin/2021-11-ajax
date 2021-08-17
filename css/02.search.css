@@ -1,10 +1,10 @@
 /********************** global init *********************/
-.lists {border-top: 1px solid #dedede}
+.lists {border-top: 1px solid #dedede; overflow-wrap: break-word;}
 .lists .list {}
 .lists.web .list {color: #555;border-bottom: 1px solid #dedede; margin-bottom: 1em; padding: 1em 0;}
 .lists.web .list .title {display:inline-block; font-size: 1.5em; color: #111; margin-bottom: 1em;}
 .lists.web .list .content {font-size: 1.125em; margin-bottom: .5em; line-height: 1.2;}
-.lists.web .list .link {color: #155daf; margin-bottom: .5em; display: inline-block;}
+.lists.web .list .link {color: #155daf; margin-bottom: .5em; display: inline-block;width: 100%;}
 .lists.web .list .dt {}
 
 .lists.image  {z-index: 1;}
@@ -12,7 +12,7 @@
 .lists.image .list:hover {border-color: #548308; transform:scale(1.5); box-shadow: 0 0 10px rgba(0, 0, 0, .4);  z-index: 9999;}
 /************ blog ************/
 .lists.blog {}
-.lists.blog .list {display: flex; padding: 1em; border-bottom: 1px solid #dedede;}
+.lists.blog .list {display: flex; align-items: flex-start; flex-wrap: wrap; padding: 1em; border-bottom: 1px solid #dedede;}
 .lists.blog .list .thumbs {width: 140px; padding: 4px; border: 1px solid #96b8ee;}
 .lists.blog .list .contents {width: calc(100% - 140px); padding-left: 1.5em;}
 .lists.blog .list .contents .title {font-size: 1.7em; color: #03378a; margin-bottom: .5em; display: inline-block;}
@@ -23,7 +23,7 @@
 
 /************clip********************/
 .lists.clip {}
-.lists.clip .list {display: flex; padding: 1em; border-bottom: 1px solid #dedede;}
+.lists.clip .list {display: flex; flex-wrap: wrap; align-items: flex-start; padding: 1em; border-bottom: 1px solid #dedede;}
 .lists.clip .list .thumbs {width: 148px; padding: 4px; border: 1px solid #96b8ee;}
 .lists.clip .list .contents {width: calc(100% - 148px); padding-left: 1.5em;}
 .lists.clip .list .contents .title {font-size: 1.7em; color: #03378a; margin-bottom: .5em; display: inline-block;}
@@ -34,7 +34,7 @@
 
 /************* cafe ******************/
 .lists.cafe {}
-.lists.cafe .list {display: flex; padding: 1em; border-bottom: 1px solid #dedede;}
+.lists.cafe .list {display: flex; align-items: flex-start; flex-wrap: wrap; padding: 1em; border-bottom: 1px solid #dedede;}
 .lists.cafe .list .thumbs {width: 140px; padding: 4px; border: 1px solid #96b8ee;}
 .lists.cafe .list .contents {width: calc(100% - 140px); padding-left: 1.5em;}
 .lists.cafe .list .contents .title {font-size: 1.7em; color: #03378a; margin-bottom: .5em; display: inline-block;}
@@ -45,7 +45,7 @@
 
 
 /************ book ********************/
-.lists.book {display:flex; flex-wrap: wrap;}
+.lists.book {display:flex; align-items: flex-start; flex-wrap: wrap;}
 .lists.book .list {width: 50%; padding: 2em; border-bottom: 1px solid #dedede;}
 .lists.book .list:nth-child(odd) {border-right: 1px solid #dedede;}
 .lists.book .list .title {font-size: 1.25em; color:#03378a; margin-bottom: .75em; display: inline-block;}
@@ -74,7 +74,7 @@
 .modal-wrapper .modal-wrap .size-wp {font-size: 0.875em; color: #999;} 
 .modal-wrapper .modal-wrap .name-wp .name {text-decoration: underline;}
 .modal-wrapper .modal-wrap .name-wp {font-size: 1.25em; color: #111; text-decoration: underline;} 
-.modal-wrapper .modal-wrap .link {color: #155daf; font-size: 14px; display: inline-block;} 
+.modal-wrapper .modal-wrap .link {color: #155daf; font-size: 14px; display: inline-block; width: 100%; overflow-wrap: break-word;} 
 .modal-wrapper .modal-wrap .dt {color: #999; font-size: .875em;} 
 
 /* .lists.image .list {width: 12.5%; border: 5px solid #fff; cursor: pointer; transition: all .5s; display: flex; position: relative;}
@@ -98,11 +98,18 @@
 }
 
 @media (max-width: 767px) {
-    .lists.image .list {width: 33.3333%;}
-
-    .lists.book .list {width: 100%;}
-    .lists.book .list:nth-child(odd) {border-right: none;}
-
+	.lists.image .list {width: 33.3333%;}
+	.lists.blog .list .contents {width: 100%;}
+	.lists.blog .list .thumbs {margin-bottom: 1em;}
+	.lists.blog .list .contents {padding-left: 0;}
+	.lists.clip .list .thumbs {margin-bottom: 1em;}
+	.lists.clip .list .contents {width: 100%; padding-left: 0;}
+	.lists.cafe .list .contents {width: 100%;}
+	.lists.cafe .list .thumbs {margin-bottom: 1em;}
+	.lists.cafe .list .contents {padding-left: 0;}
+	.lists.book .list {width: 100%;}
+	.lists.book .list:nth-child(odd) {border-right: none;}
+    
     .modal-wrapper .modal-wrap {width: 96%;}
     .modal-wrapper .modal-wrap .img-wp img { max-width: 100%;}
     .modal-wrapper .modal-wrap .img-wp .bt-close {right: 0;}

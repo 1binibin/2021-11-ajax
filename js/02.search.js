@@ -239,13 +239,13 @@ function setPager(totalRecord) {
 
 /*************** event callback *****************/
 function onIntersection(el) {
-        if(el[el.lenght - 1].isIntersecting && isEnd === false) {
-            page = Number(page) + 1;
-            axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
-        }
-        if(isEnd === true){
-            // observer.unobserve(document);
-        };
+	if(el[el.length - 1].isIntersecting && isEnd === false) {
+		page = Number(page) + 1;
+		axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
+	}
+	if(isEnd == true) {
+		// observer.unobserve(document.)
+	}
 }
 function onPagerClick() {
 	page = Number(this.dataset['page']);

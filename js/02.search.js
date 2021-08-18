@@ -174,6 +174,7 @@ function setCafeLists(r) {
 
 function setPager(totalRecord) {
     $('.pager-wrap').show();
+    if(observer && $('.observer')[0]) observer.unobserve($('.observer')[0]);
     $('.observer').remove();
     //if(observer && document.querySelector('.observer'))
     //    observer.unobserve(document.querySelector('.observer'));
@@ -231,6 +232,8 @@ function onIntersection(el) {
 		axios.get(getPath(cate), getParams(query)).then(onSuccess).catch(onError);
 	}
 	if(isEnd == true) {
+        if(observer && $('.observer')[0]) observer.unobserve(($('observer')[0]));
+        $('.observer').remove();
 		// observer.unobserve(document.)
 	}
 }
@@ -299,6 +302,8 @@ function onSuccess(res) {
 
 function onError(err) {
     console.log(err);
+    if(observer && $('.observer')[0]) observer.unobserve(($('.observer')[0]));
+    $('.observer').remove();
 }
 
 /*************** event init *****************/

@@ -15,38 +15,56 @@ var observer;
  */
 /*************** user function  *****************/
 function getPath(cate) {
-    return kakaoURL + (cate === 'book' ? 'v3': 'v2')+/search/+ cate;
+	return kakaoURL+(cate === 'book' ? 'v3' : 'v2')+'/search/'+cate;
 }
 
 function getParams(query) {
-
-    return{
-        params: { query: query, size: size[cate], page: page },
-        headers: { Authorization: auth }
-    }
+	return {
+		params: { query: query, size: size[cate], page: page },
+		headers: { Authorization: auth }
+	}
 }
 
 function setTotalCnt(cnt) {
-    $('.result-cnt').html(numeral(cnt).format('0,0'));
+	$('.result-cnt').html(numeral(cnt).format('0,0'));
 }
 
 function setWebLists(r) {
-    $('.lists').empty().attr({'class': 'lists web', 'style': '' });
-    r.forEach(function(v, i) {
-        var html = '<li class="list">';
-        html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
-        html += '<p class="content">'+v.contents+'</p>';
-        html += '<a href="'+v.url+'" class="link" target="_blank">'+v.url+'</a>';
-        html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
-        html += '</li>';
-        $('.lists').append(html);
-    });
+	$('.lists').empty().attr({'class': 'lists web', 'style': ''});
+	r.forEach(function(v, i) {
+		var html = '<li class="list">';
+		html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
+		html += '<p class="content">'+v.contents+'</p>';
+		html += '<a class="link" href="'+v.url+'" target="_blank">'+v.url+'</a>';
+		html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
+		html += '</li>';
+		$('.lists').append(html);
+	});
 }
 
+function setBlogLists(r) {
+	$('.lists').empty().attr({'class': 'lists blog', 'style': ''});
+	var html = '';
+	r.forEach(function(v, i) {
+		html  = '<li class="list">';
+		html += '<a class="thumbs" href="'+v.url+'" target="_blank">';
+		html += '<img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">';
+		html += '</a>';
+		html += '<div class="contents">';
+		html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
+		html += '<p class="content">'+v.contents+'</p>';
+		html += '<a class="name" href="'+v.url+'" target="_blank">'+v.blogname+'</a> | <a href="'+v.url+'" class="link" target="_blank">'+v.url+'</a>';
+		html += '<div class="dt">'+moment(v.datetime).format('YYYY-MM-DD HH:mm:ss')+'</div>';
+		html += '</div>';
+		html += '</li>';
+		$('.lists').append(html);
+	});
+}
 
 function setImageLists(r) {
 	$('.pager-wrap').hide();
 	if(page === 1) {
+		$('.grid-wrap').masonry('destroy');
 		$('.lists').empty().attr({'class': 'lists image grid-wrap', 'style': ''});
 		$('.lists').append('<li class="list grid-sizer"></li>');
 	}
@@ -113,60 +131,41 @@ function setClipLists(r) {
 	observer.observe(document.querySelector('.observer'));
 }
 
-function setBlogLists(r) {
-    $('.lists').empty().attr({'class': 'lists blog', 'style': '' });
-    var html = '';
-    r.forEach(function(v, i) {
-        html ='<li class="list">'
-        html +='<a href="'+v.url+'" class="thumbs" target="_blank">'
-        html +='<img src="'+v.thumbnail+'" alt="'+v.title+'" class="w100">'
-        html +='</a>'
-        html +='<div class="contents">'
-        html +='<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>'
-        html +='<p class="content">'+v.contents+'</p>'
-        html +='<a class="name" href="'+v.url+'" target="_blank">'+v.blogname+'</a> | <a href="" class="link">'+v.url+'</a>'
-        html +='<div class="dt">'+moment(v.datatime).format('YYYY-MM-DD HH:mm:ss')+'</div>'
-        html +='</div>'
-        html +='</li>'
-        $('.lists').append(html);
-    });
-}
-
 function setBookLists(r) {
-    $('.lists').empty().attr({'class': 'lists book', 'style': '' });
-    var html = '';
-    r.forEach(function(v, i) {
-        var author = v.authors.join(', ');
-        var thumbnail = v.thumbnail !== '' ? v.thumbnail : 'http://via.placeholder.com/120x174/eee?text=No+image';
-        var translator = v.translators.join(', ');
-        var salePrice = (v.sale_price > -1 ? numeral(v.sale_price).format('0,0') + '원' : '판매중지');
-        var isbn = v.isbn.replace(' ', ' / ');
-        var dt = moment(v.datetime).format('YYYY-MM-DD');
-        html ='<li class="list">';
-        html +='<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
-        html +='<div class="info-wrap">';
-        html +='<a class="thumb-wp" href="'+v.url+'" target="_blank">';
-        html +='<img src="'+thumbnail+'" alt="" class="w100">';
-        html +='</a>';
-        html +='<div class="info-wp" target="_blank">';
-        html +='<div class="authors">';
-        html +='<span class="author">'+author+'</span>';
-        if(v.translators.lenght) html +='<span class="translator"> (역: '+translator+')</span>';
-        html +='</div>';
-        html +='<div class="prices">';
-        html +='<span class="price">'+numeral(v.price).format('0,0')+'</span> | ';
-        html +='<span class="sale-price">'+salePrice+'</span>';
-        if(v.status) html +='<span class="status">['+v.status+']</span>';
-        html +='</div>';
-        html +='<div class="publisher">'+v.publisher+'</div>';
-        html +='<div class="isbn">'+isbn+'</div>';
-        html +='<div class="dt">'+dt+'</div>';
-        html +='</div>';
-        html +='</div>';
-        html +='<a class="content" href="'+v.url+'" target="_blank">'+v.contents+'</a>';
-        html +='</li>';
-        $('.lists').append(html);
-    });
+	$('.lists').empty().attr({'class': 'lists book', 'style': ''});
+	var html = '';
+	r.forEach(function(v, i) {
+		var author = v.authors.join(', ');
+		var thumbnail = v.thumbnail !== '' ? v.thumbnail : 'http://via.placeholder.com/120x174/eee?text=No+image';
+		var translator = v.translators.join(', ');
+		var salePrice = v.sale_price > -1 ? numeral(v.sale_price).format('0,0')+'원' : '판매중지';
+		var isbn = v.isbn.replace(' ', ' / ');
+		var dt = moment(v.datetime).format('YYYY-MM-DD');
+		html  = '<li class="list">';
+		html += '<a class="title" href="'+v.url+'" target="_blank">'+v.title+'</a>';
+		html += '<div class="info-wrap">';
+		html += '<a class="thumb-wp" href="'+v.url+'" target="_blank">';
+		html += '<img src="'+thumbnail+'" alt="" class="w100">';
+		html += '</a>';
+		html += '<div class="info-wp">';
+		html += '<div class="authors">';
+		html += '<span class="author">'+author+'</span>';
+		if(v.translators.length) html += '<span class="translator"> (역: '+translator+')</span>';
+		html += '</div>';
+		html += '<div class="prices">';
+		html += '<span class="price">'+numeral(v.price).format('0,0')+'</span> | ';
+		html += '<span class="sale-price">'+salePrice+'</span>';
+		if(v.status) html += '<span class="status"> ['+v.status+']</span>';
+		html += '</div>';
+		html += '<div class="publisher">'+v.publisher+'</div>';
+		html += '<div class="isbn">'+isbn+'</div>';
+		html += '<div class="dt">'+dt+'</div>';
+		html += '</div>';
+		html += '</div>';
+		html += '<a class="content" href="'+v.url+'" target="_blank">'+v.contents+'</a>';
+		html += '</li>';
+		$('.lists').append(html);
+	});
 }
 
 function setCafeLists(r) {
@@ -239,6 +238,7 @@ function setPager(totalRecord) {
 	else
 		$('.pager-wrap .bt-last').attr('disabled', false)[0].dataset['page'] = totalPage;
 }
+
 
 
 /*************** event callback *****************/

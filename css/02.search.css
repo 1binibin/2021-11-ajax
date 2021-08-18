@@ -68,9 +68,9 @@
 
 /********** pager ************/
 .pager-wrap {display: flex; justify-content: center; margin: 2em 0;}
-.pager-wrap i {width: 32px; height:32px; border: 1px solid #ccc; text-align: center; line-height: 30px; margin-right: -1px; text-decoration: none; font-style: normal; cursor: pointer;}
+.pager-wrap button {width: 32px; height:32px; border: 1px solid #ccc; text-align: center; line-height: 30px; margin-right: -1px; text-decoration: none; font-style: normal; cursor: pointer;}
 .pager-wrap .bt-page.active {background-color: #333; color: #fff;}
-.pager-wrap i:not(.bt-page) {background-color: #efefef;}
+.pager-wrap button:not(.bt-page) {background-color: #efefef;}
 
 
 

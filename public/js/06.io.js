@@ -16,7 +16,7 @@ var observer;   //관찰자
 var option = {
     //root: null, // null을 주거나 값을 안준다면 brower의 뷰포트
     //rootMargin: '0px',  // px을 주어야함, 안주면 '0px', 마진값(gap)에 반응해서 나타남.
-    //tresholder: 0,   // 기본값:0 , 1을 주면 화면에 다 나와야 true값을 준다. , .5 절반 정도 나왔을때 ture, [0, .25, .5, .75, 1] 배열로 주면 배열의 값에 intersectionRatio가반응함
+    //threshold: 0,   // 기본값:0 , 1을 주면 화면에 다 나와야 true값을 준다. , .5 절반 정도 나왔을때 ture, [0, .25, .5, .75, 1] 배열로 주면 배열의 값에 intersectionRatio가반응함
 }
 observer = new IntersectionObserver(onIntersection, option);
 observer.observe( document.querySelector('.wrapper') );

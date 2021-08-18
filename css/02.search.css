@@ -8,9 +8,9 @@
 .lists.web .list .dt {}
 
 /************* image *********************/
-.lists.image  {z-index: 1;}
-.lists.image .list {width: 12.5%; border: 5px solid #fff; cursor: pointer; transition: all .5s;}
-.lists.image .list:hover {border-color: #548308; transform:scale(1.5); box-shadow: 0 0 10px rgba(0, 0, 0, .4);  z-index: 9999;}
+.lists.image  {z-index: 1; display: flex; flex-wrap: wrap;}
+.lists.image .list {width: 12.5%; border: 5px solid #fff; cursor: pointer;}
+.lists.image .list:hover {border-color: #548308; box-shadow: 0 0 10px rgba(0, 0, 0, .4);  z-index: 9999;}
 
 
 /************ blog ************/

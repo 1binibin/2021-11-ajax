@@ -13,6 +13,9 @@
 	<script src="../js/moment.min.js"></script>
 	<script src="../js/lodash.min.js"></script>
 	<script src="../js/axios.min.js"></script>
+	<script src="../js/promise.polyfill.min.js"></script>
+	<script src="../js/intersection-observer.js"></script>
+	<script src="../js/numeral.min.js"></script>
 	<script src="../js/masonry.pkgd.min.js"></script>
 	<script src="../js/imagesloaded.pkgd.min.js"></script>
 	<!-- masonry 작업 -->
@@ -22,11 +25,11 @@
 	<div class="container">
 		<form class="search-form form-inline my-5">
 			<select name="category" class="form-control mr-2">
-				<option value="web">웹사이트</option>
+				<option value="web" selected>웹사이트</option>
 				<option value="blog">블로그</option>
 				<option value="image">이미지</option>
 				<option value="vclip">동영상</option>
-				<option value="book" >도서</option>
+				<option value="book">도서</option>
 				<option value="cafe">카페</option>
 			</select>
 			<input type="text" class="form-control mr-2 flex-grow-1" name="query" autofocus value="블랙핑크">
@@ -34,9 +37,9 @@
 		</form>
 		<h2 class="text-right mb-3">검색결과: <span class="result-cnt font-weight-bold"></span>건</h2>
 		<ul class="lists book">
-		
+			
 		</ul>
-		<div class="pager-wrap" style="display: none">
+		<div class="pager-wrap" style="display: none;">
 			<button class="bt-first fa fa-arrow-left" data-page="1" disabled></button>
 			<button class="bt-pager-prev fa fa-angle-double-left" disabled></button>
 			<button class="bt-prev fa fa-angle-left" disabled></button>

@@ -3,7 +3,7 @@
 '0000 0000'.replace(' ', ' / ');  ->  "0000 / 0000"
 */
 /*************** global init *****************/
-var auth = 'KakaoAK e353e600436866e7fd69f646401bf28a';
+var auth = process.env.MY_AUTH;
 var kakaoURL = 'https://dapi.kakao.com/'
 var cate, query, isEnd = false, page = 1;
 var size = { web: 10, blog: 10, book: 10, cafe: 10, vclip: 15, image:80 }

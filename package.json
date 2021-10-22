@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14"
+  },
+  "name": "11.ajax",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1binibin/2021-11-ajax.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1binibin/2021-11-ajax/issues"
+  },
+  "homepage": "https://github.com/1binibin/2021-11-ajax#readme",
+  "description": ""
+}

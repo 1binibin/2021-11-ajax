@@ -1,18 +1,10 @@
-/*
-['홍길동', '홍길만', '홍길순'].join(', ')  -> "홍길동, 홍길만, 홍길순"
-'0000 0000'.replace(' ', ' / ');  ->  "0000 / 0000"
-*/
+
 /*************** global init *****************/
-var auth = process.env.MY_AUTH;
+var auth = 'KakaoAK e353e600436866e7fd69f646401bf28a';
 var kakaoURL = 'https://dapi.kakao.com/'
 var cate, query, isEnd = false, page = 1;
 var size = { web: 10, blog: 10, book: 10, cafe: 10, vclip: 15, image:80 }
 var observer;
-/**
- * getParams(query)는 다른 query
- * 데이터 받는 주소값의 query는 자동생성 같은 느낌.
- * 
- */
 /*************** user function  *****************/
 function getPath(cate) {
     return kakaoURL + (cate === 'book' ? 'v3': 'v2')+/search/+ cate;
